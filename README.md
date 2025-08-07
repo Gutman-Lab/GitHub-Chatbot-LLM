@@ -89,13 +89,5 @@ HistomicsTK
 
 FAISS vectorstore is saved to /vectorstore/
 
-All inference happens locally with GPU acceleration (if available)
-
-Troubleshooting
-Problem	Solution
-torch.cuda.is_available() == False	Ensure torch installed with +cu118 and CUDA is present
-libcublas.so.11 missing	Install nvidia-cuda-compat-11-8
-Chatbot response slow	Tune search_kwargs={"k": 3}, use .invoke() not .run()
-
 License
 Department of Pathology & Laboratory Medicine License. © Gutman Lab, Emory University.
