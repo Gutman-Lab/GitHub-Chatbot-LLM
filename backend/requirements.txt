@@ -1,0 +1,36 @@
+# === LLM and LangChain ===
+langchain==0.1.20
+langchain-community==0.0.30
+langchainhub==0.1.15
+langchain-ollama==0.1.4
+
+# === Embeddings & Transformers ===
+sentence-transformers==2.6.1
+transformers==4.41.1
+huggingface-hub==0.23.2
+
+# === FAISS ===
+faiss-cpu==1.7.4  # GPU version not required for retrieval here
+
+# === Vector Store / Preprocessing ===
+tqdm==4.66.4
+
+# === Git Integration ===
+gitpython==3.1.43
+
+# === Frontend ===
+streamlit==1.35.0
+
+# === Core Python Dependencies ===
+numpy==1.26.4
+
+# === Torch with CUDA 11.8 ===
+torch==2.2.2+cu118
+torchvision==0.17.2+cu118
+torchaudio==2.2.2
+
+# Install using:
+# pip install -r requirements.txt --extra-index-url https://download.pytorch.org/whl/cu118
+# (.venv) bhavesh@einstein:~/react-llm-github$ python -c "import torch; print(torch.cuda.is_available())"
+# return True men using gpu
+

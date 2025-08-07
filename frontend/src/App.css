@@ -1,0 +1,242 @@
+/* App.css (as provided) */
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+  background: #ffffff;
+  color: #111;
+}
+
+.chat-ui {
+  display: flex;
+  height: 100vh;
+}
+
+/* ---------- Sidebar ---------- */
+.sidebar {
+  width: 220px;
+  background: #f5f5f5;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-right: 1px solid #ccc;
+}
+.sidebar h2 {
+  margin-top: 0;
+  font-size: 1.2rem;
+}
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  overflow-y: auto;
+  max-height: 300px;
+}
+.sidebar li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4px;
+  font-size: 0.9rem;
+}
+.sidebar li span {
+  cursor: pointer;
+}
+.sidebar li:hover {
+  background: #ddd;
+}
+
+.new-chat-btn {
+  margin-bottom: 1rem;
+  padding: 8px;
+  font-size: 0.9rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  background: #fff;
+  cursor: pointer;
+}
+
+/* Bottom controls */
+.bottom-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.bottom-controls input,
+.bottom-controls button {
+  padding: 8px;
+  font-size: 0.9rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  background: #fff;
+}
+.bottom-controls button:hover {
+  background: #e6e6e6;
+  cursor: pointer;
+}
+
+/* ---------- Main ---------- */
+main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  padding: 1rem;
+  border-bottom: 1px solid #ccc;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.model-selector {
+  padding: 8px;
+  border-radius: 6px;
+}
+
+.chat-box {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1rem;
+}
+
+/* Chat lines + bubbles */
+.chat-line {
+  margin: 1rem 0;
+  font-size: 1rem;
+  line-height: 1.6;
+  display: flex;
+}
+.chat-line.user { justify-content: flex-end; }
+.chat-line.assistant { justify-content: flex-start; }
+
+.bubble {
+  max-width: 900px;
+  width: fit-content;
+  padding: 12px 14px;
+  border-radius: 12px;
+  background: #fafafa;
+  border: 1px solid #e6e6e6;
+  box-shadow: 0 1px 0 rgba(0,0,0,0.04);
+}
+.chat-line.user .bubble {
+  background: #eaf3ff;
+  border-color: #d6e6ff;
+}
+
+/* ---------- Markdown defaults ---------- */
+.bubble :is(p, ul, ol) {
+  margin: 0.5rem 0;
+}
+.bubble ul, .bubble ol {
+  padding-left: 1.25rem;
+}
+.bubble h1, .bubble h2, .bubble h3 {
+  margin: 0.8rem 0 0.4rem;
+}
+
+/* Inline code */
+.bubble code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+  font-size: 0.95em;
+  background: #f6f8fa;
+  border: 1px solid #e5e7eb;
+  padding: 0.15em 0.35em;
+  border-radius: 6px;
+}
+
+/* Fenced code blocks */
+.bubble pre {
+  background: #f6f8fa;         /* pairs with GitHub highlight theme */
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 12px;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 0.75rem 0;
+}
+
+.bubble pre code {
+  display: block;               /* ensure block layout inside pre */
+  background: transparent;      /* handled by pre */
+  padding: 0;
+  border: 0;
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+
+/* Make highlight.js text readable */
+.bubble .hljs {
+  background: transparent;      /* keep our pre background */
+}
+
+/* Typing dots */
+.typing-dots span {
+  animation: blink 1.5s infinite;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+.typing-dots span:nth-child(2) { animation-delay: 0.2s; }
+.typing-dots span:nth-child(3) { animation-delay: 0.4s; }
+@keyframes blink {
+  0%, 80%, 100% { opacity: 0; }
+  40% { opacity: 1; }
+}
+
+/* Input */
+.input-area {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  border-top: 1px solid #ccc;
+  gap: 1rem;
+}
+.input-area textarea {
+  flex: 1;
+  padding: 10px;
+  font-size: 1rem;
+  border-radius: 12px;
+  border: 1px solid #aaa;
+  resize: none;
+}
+.input-area button {
+  background: black;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+}
+
+/* ---------- Dark mode ---------- */
+body.dark-mode {
+  background: #1e1e1e;
+  color: white;
+}
+body.dark-mode .sidebar { background: #2c2c2c; }
+body.dark-mode input,
+body.dark-mode button,
+body.dark-mode select,
+body.dark-mode textarea {
+  background: #3a3a3a;
+  color: white;
+  border: 1px solid #555;
+}
+body.dark-mode .bubble {
+  background: #232323;
+  border-color: #3a3a3a;
+}
+body.dark-mode .chat-line.user .bubble {
+  background: #1e2a39;
+  border-color: #2b3c52;
+}
+body.dark-mode .bubble code {
+  background: #2a2a2a;
+  border-color: #3a3a3a;
+}
+body.dark-mode .bubble pre {
+  background: #111418;
+  border-color: #2b2b2b;
+}
